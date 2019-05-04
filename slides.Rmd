@@ -19,7 +19,7 @@ output:
 
 --
 
-- Existing flight searching engines ([Google Flight](https://www.google.com/flights?hl=en#flt=/m/02j3w..2019-05-20*./m/02j3w.2019-05-24;c:USD;e:1;ls:1w;sd:0;t:h), for example, is a very good flight searching engine, how could we beat products alike?).
+- Existing flight searching engines (e.g. [Google Flight](https://www.google.com/flights?hl=en#flt=/m/02j3w..2019-05-20*./m/02j3w.2019-05-24;c:USD;e:1;ls:1w;sd:0;t:h) is a very good flight searching engine, how could we beat products alike?).
 
 --
 
@@ -28,6 +28,10 @@ output:
 --
 
 - Our goal: build a flight searching R package and Shiny APP from 0, and solve the problems we noticed. 
+
+--
+
+- Google Flight API was deprecated on April/10/2018. Instead, we used Skyscanner API.
 
 ---
 class: inverse, center, middle
