@@ -31,7 +31,18 @@ output:
 
 --
 
-- Google Flight API was deprecated on April/10/2018. Instead, we used Skyscanner API.
+- Google Flight API was deprecated on April/10/2018. Instead, we used Rapid API which enquires data from Skyscanner.
+
+---
+# Skyscanner
+
+[Skyscanner](https://www.skyscanner.com/) is a travel fare aggregator website and travel metasearch engine based in Scotland, owned by Ctrip, the largest travel company in China.
+
+```{r, out.width='100%', fig.align='center', echo=F}
+knitr::include_graphics('skyscanner.png')
+```
+
+[Skyscanner flight search via Rapid API (free)](https://rapidapi.com/skyscanner/api/skyscanner-flight-search)
 
 ---
 class: inverse, center, middle
