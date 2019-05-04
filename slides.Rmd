@@ -1,0 +1,103 @@
+---
+title: "FlightScanner"
+subtitle: ""
+author: "Dapeng Hu, Yang Qiao, Min Zhang, Xin Zhang, Zerui Zhang"
+institute: "Iowa State University"
+date: "2019/05/03"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# Motivation 
+
+- "All flights cost money, but some are affordable!"
+
+--
+
+- Existing flight searching engines ([Google Flight](https://www.google.com/flights?hl=en#flt=/m/02j3w..2019-05-20*./m/02j3w.2019-05-24;c:USD;e:1;ls:1w;sd:0;t:h), for example, is a very good flight searching engine, how could we beat products alike?).
+
+--
+
+- They are not perfect: distracting ads/ no map of origin & destination/ cannot search automatically.
+
+--
+
+- Our goal: build a flight searching R package and Shiny APP from 0, and solve the problems we noticed. 
+
+---
+class: inverse, center, middle
+
+# Get Started
+
+---
+
+# Hello FlightScanner!
+
+Install the **FlightScanner** package from [Github](https://github.com/MinZhang95/flightscanner)
+
+```{r eval=FALSE, tidy=FALSE}
+devtools::install_github("MinZhang95/flightscanner")
+```
+
+--
+
+Main files:
+
+- api.R
+
+--
+
+- database.R
+
+--
+
+- dataprocess.R
+
+---
+
+# api.R
+
+---
+
+# Automatically Key Checking
+
+One of our package's feature is the automatcially key checking when loading the package.
+
+If there is no file named **API_KEY.txt** in the working directory, then an interactive function **keychecking** will run.
+
+```{r}
+library(flightscanner)
+```
+
+---
+
+# Cont.d
+
+If the input API is not valid, then it will has message 
+
+```{r,echo=FALSE}
+cli::cat_line("Check your API key or network connection.")
+```
+
+otherwise
+
+```{r,echo=FALSE}
+cli::cat_line("Welcome to FlightScanner!")
+```
+
+The key will be stored in **API_KEY.txt** at the current directory and can be used in the future.
+
+---
+
+# Shiny
+
+---
+class: inverse, center, middle
+# Thanks! 
+![](thx.jpeg)
+  
