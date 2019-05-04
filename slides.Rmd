@@ -42,6 +42,8 @@ output:
 knitr::include_graphics('skyscanner.png')
 ```
 
+--
+
 [Skyscanner flight search via Rapid API (free)](https://rapidapi.com/skyscanner/api/skyscanner-flight-search)
 
 ---
