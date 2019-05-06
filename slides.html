@@ -348,7 +348,137 @@ Here is a set of functions we write to extract each sub-list of the response and
 ## 6 15628     6497 PUS   Airport Gimhae International
 ```
 ---
+# dataprocess.R
+This file has some functions to deal with the data. Two main functions:
 
+--
+
+- **GetData**: obtain some data.frames from the source.
+
+    - **GetData.response**  
+      extract data from API response (list).
+      
+    - **GetData.SQLiteConnection**  
+      read data from SQLite database (connection).
+
+--
+
+- **FilterFlight**: filter flights with user-provided conditions.
+
+---
+# dataprocess.R \- GetData
+```r
+GetData(x, ...)
+```
+
+2 methods: 
+- `response`: from API response
+- `SQLiteConnection`: from SQLite database
+
+--
+
+Return a list of 7 tibbles, using functions in unpack.R.
+
+- Price
+- Itinerary
+- Leg
+- Segment
+- Carrier
+- Agent
+- Place
+
+---
+# dataprocess.R \- FilterFlight
+```r
+FilterFlight(x, max_price, max_duration, max_stops, layover,
+             carrier_include, carrier_exclude,
+             out_departure, out_arrival, in_departure, in_arrival)
+```
+
+|parameter | description |
+|:---------|:------------|
+| x | A list of data.frame. (from GetData) |
+| max_price | Maximum price. |
+| max_duration | Maximum duration in minutes. |
+| max_stops | Maximum number of stops. |
+| layover | Range of layover in minutes. |
+| carrier_include, carrier_exclude | Include / Exclude specified carriers. |
+| out_departure, out_arrival, in_departure, in_arrival | Range of outbound / inbound departure / arrival time. |
+
+---
+# database.R
+- Why **database**?
+    - Scrape and save data for a period to see the price change over time.
+    - Fast using SQL.
+
+--
+
+- Why **SQLite**?
+    - Server-free, configuration-free, administration-free. Easy to use.
+    - On-disk file format. Improve performance and reliability, reduce cost and complexity.
+    - Very light size, compared to MySQL, Oracle, etc.
+    
+--
+
+Our key functions (mainly depends on `DBI` and `RSQLite` package):
+
+- **dbCreateDB**: Connect to / create a SQLite database file, create 7 tables.
+
+- **dbSaveData**: Save data to SQLite database.
+
+- **ListUnpack**, **ListPack**: Unpack / pack tibbles.
+
+---
+# database.R \- dbCreateDB
+```r
+dbCreateDB(conn = RSQLite::SQLite(), dbname = "flight.db")
+```
+
+Function:
+1. Connect to SQLite driver
+
+2. Create local database file "flight.db" if not exists.
+
+3. Create 7 tables if not exist in the database.  
+    - Price, Itineries, Legs, Segments, Agents, Carriers, Places.
+
+---
+# database.R \- ListUnpack, ListPack
+Convert betweeen object and character string. Since SQLite doesn't support `list` as the element of `data.frame`. An example:
+
+
+```
+# A tibble: 1 x 2
+  a     b                   
+  &lt;chr&gt; &lt;list&gt;              
+1 A     &lt;data.frame [2 × 1]&gt;
+```
+
+```
+-------------------------------------------------------
+```
+
+```
+# A tibble: 1 x 2
+  a    
+  &lt;chr&gt;
+1 A    
+  b                                                                        
+  &lt;chr&gt;                                                                    
+1 "structure(list(x = 9:10), class = \"data.frame\", row.names = c(NA, -2L…
+```
+
+```
+-------------------------------------------------------
+```
+
+```
+   x
+1  9
+2 10
+```
+
+---
 # Automatically Key Checking
 
 One of our package's feature is the automatcially key checking when loading the package.
