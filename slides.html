@@ -13,6 +13,7 @@ class: center, middle, inverse, title-slide
 
 # FlightScanner
 ### Dapeng Hu, Yang Qiao, Min Zhang, Xin Zhang, Zerui Zhang
+### Iowa State University
 ### 2019/05/06
 
 ---
@@ -479,26 +480,42 @@ Convert betweeen object and character string. Since SQLite doesn't support `list
 ```
 
 ---
-# Automatically Key Checking
 
-One of our package's feature is the automatcially key checking when loading the package.
+# Automatical Key Checking
+
+One of our package's feature is the automatcial key checking when loading the package.
 
 If there is no file named **API_KEY.txt** in the working directory, then an interactive function **keychecking** will run.
 
 
 ```r
 library(flightscanner)
+#
+#
+# API key is required!
+# Please follow the instructions to get the key:
+# 1. Browse and login:  https://rapidapi.com/skyscanner/api/skyscanner-flight-search 
+#    Do you want to visit this website (1 for YES; 0 for NO)?
+#
+# 1 or 0
+#
+# 2. Copy the value of X-RapidAPI-Key in Header Parameters.
+#    Paste your key (without quote):
+#
+# xxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
+
 
 ---
 
-# Cont.d
+# Cont'd
 
-If the input API is not valid, then it will has message 
+If the input API is not valid, then it will show the message 
 
 
 ```
-## Check your API key or network connection.
+## Check your API key or network connection. 
+##  And use SetAPI to set your key later.
 ```
 
 otherwise
@@ -512,6 +529,75 @@ The key will be stored in **API_KEY.txt** at the current directory and can be us
 
 ---
 
+# Automatical data download
+
+Another feature of our package is the automatcial data download when even quit the Rstudio. This feature is based on the package "cronR"
+
+
+```r
+flightscanner::CreateJob("DSM", "DTW", "2019-06-01",
+          path = file.path(getwd(), "inst"), frequency = "minutely")
+flightscanner::CreateJob("DSM", "DTW", "2019-06-01", 
+          path = file.path(getwd(), "inst"), frequency = "hourly")
+flightscanner::CreateJob("DSM", "DTW", "2019-06-01", "2019-06-10" , 
+          path = file.path(getwd(), "inst"), 
+          frequency = "hourly", at = "3AM")
+cronR::cron_njobs() # show the jobs
+cronR::cron_ls() # show the jobs
+cronR::cron_clear(ask = FALSE) # clear all the jobs
+```
+
+Two files will be generated:
+
+- log file: script_DSM_DTW_2019-06-01.log
+
+- database: flight.db
+
+---
+# Cont'd
+
+log file: script_DSM_DTW_2019-06-01.log
+
+```r
+# Time: 2019-05-05 09:00:00
+# Welcome to FlightScanner!
+# Working Directory: /Users/xin/Documents/Course/STAT585/flightscanner/inst
+# API Key: 3e85a0e43cmshac6dba6fde57066p1c1145jsn1e6f8c3d0e33
+# Command Line Arguments:  DSM DTW 2019-06-01 
+# Try to update data 16 times.
+# Warning message:
+# Unmatch of Segments and Stops: [LegId] = 11140-1906010743--30963,-32462-3-11152-1906020959 
+
+# Time: 2019-05-05 13:00:01
+# Welcome to FlightScanner!
+# Working Directory: /Users/xin/Documents/Course/STAT585/flightscanner/inst
+# API Key: 3e85a0e43cmshac6dba6fde57066p1c1145jsn1e6f8c3d0e33
+# Command Line Arguments:  DSM DTW 2019-06-01 
+# Try to update data 9 times.
+# Warning message:
+# Unmatch of Segments and Stops: [LegId] = 11140-1906010743--30963,-32462-3-11152-1906020959 
+```
+
+---
+
+# Cont'd
+
+database: flight.db
+
+
+```r
+con &lt;- dbCreateDB(dbname = "flight.db") # connect to the database
+data &lt;- GetData(con)  # from SQLite database
+dbListTables(con) # disconnect with the database
+```
+
+```
+## [1] "agent"     "carrier"   "itinerary" "leg"       "place"     "price"    
+## [7] "segment"
+```
+
+
+---
 # Shiny
 
 ---
