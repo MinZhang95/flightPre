@@ -85,7 +85,7 @@ Main files:
 ---
 
 # api.R
-- Set API hostname and key globally
+- Set API key globally
 ```{r, eval = FALSE, tidy = FALSE}
 SetAPI <- function(key) {
   options(APIkey = key)
