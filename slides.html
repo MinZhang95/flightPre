@@ -508,14 +508,14 @@ The key will be stored in **APIkey.txt** at the current directory and can be use
 
 # Automatical data download
 
-Another feature of our package is the automatcial data download when even quit the Rstudio. This feature is based on the package "cronR"
+Another feature of our package is the automatcial data download when even quit the Rstudio. This feature is based on the `conR` package.
 
 ```r
 # create jobs
 CreateJob("DSM", "DTW", "2019-06-01", frequency = "minutely")
 CreateJob("DSM", "DTW", "2019-06-01", frequency = "hourly")
 CreateJob("DSM", "DTW", "2019-06-01", "2019-06-10",
-          frequency = "hourly", at = "3AM")
+          frequency = "daily", at = "3AM")
 
 # show the jobs
 cron_ls() 
