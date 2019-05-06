@@ -13,7 +13,6 @@ class: center, middle, inverse, title-slide
 
 # FlightScanner
 ### Dapeng Hu, Yang Qiao, Min Zhang, Xin Zhang, Zerui Zhang
-### Iowa State University
 ### 2019/05/06
 
 ---
@@ -346,7 +345,7 @@ This file has some functions to deal with the data. Two main functions:
 
 ---
 # dataprocess.R \- GetData
-&lt;img src="yanggedetu.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="yanggedetu.png" width="60%" style="display: block; margin: auto;" /&gt;
 ```r
 GetData(x, ...)
 ```
@@ -420,13 +419,12 @@ Function:
 
 2. Create a local database file "flight.db" if not exists.
 
-3. Create 7 tables if not exist in the database.  
+3. Create schema of 7 tables if not exist in the database.  
     - Price, Itineries, Legs, Segments, Agents, Carriers, Places.
 
 ---
 # database.R \- ListUnpack, ListPack
-Convert betweeen object and character string. Since SQLite doesn't support `list` as the element of `data.frame`. An example:
-
+Convert betweeen object and character string. An example:
 
 ```
 # A tibble: 1 x 2

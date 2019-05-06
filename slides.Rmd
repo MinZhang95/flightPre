@@ -259,7 +259,7 @@ This file has some functions to deal with the data. Two main functions:
 
 ---
 # dataprocess.R \- GetData
-```{r, out.width='65%', echo=FALSE, eval=TRUE}
+```{r, out.width='60%', echo=FALSE, eval=TRUE}
 knitr::include_graphics('yanggedetu.png')
 ```
 ```r
@@ -335,13 +335,12 @@ Function:
 
 2. Create a local database file "flight.db" if not exists.
 
-3. Create 7 tables if not exist in the database.  
+3. Create schema of 7 tables if not exist in the database.  
     - Price, Itineries, Legs, Segments, Agents, Carriers, Places.
 
 ---
 # database.R \- ListUnpack, ListPack
-Convert betweeen object and character string. Since SQLite doesn't support `list` as the element of `data.frame`. An example:
-
+Convert betweeen object and character string. An example:
 ```{r, echo=FALSE, eval=TRUE}
 df <- tibble(a = LETTERS[1], b = list(data.frame(x = 9:10)))
 df
