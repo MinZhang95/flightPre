@@ -87,8 +87,8 @@ Main files:
 # api.R
 - Set API hostname and key globally
 ```{r, eval = FALSE, tidy = FALSE}
-SetAPI <- function(host, key) {
-  options(API = list(host = host, key = key))
+SetAPI <- function(key) {
+  options(APIkey = key)
 }
 ```
 
@@ -100,7 +100,7 @@ SetAPI <- function(host, key) {
 # api.R
 - Create a session with query details and get a session ID
 ```{r, eval=FALSE, tidy=FALSE}
-CreateSession <- 
+apiCreateSession <- 
  function(origin, destination, startDate, returnDate = NULL,
           adults = 1, children = NULL, infants = NULL,
           country = "US", currency = "USD", locale = "en-US",
@@ -108,20 +108,12 @@ CreateSession <-
           includeCarriers = NULL, excludeCarriers = NULL)
 ```
 
---
-- Get back the session ID in the `location` header from the output of CreateSession
-```{r, eval=FALSE, tidy=FALSE}
-SessionKey <- function(x) {
-  location <- headers(x)$location
-  y <- strsplit(location, "/")[[1]]
-  y[length(y)]
-}
-```
+
 ---
 # api.R
 Use session ID to poll results, sort results and filter results farther.
 ```{r, eval=FALSE, tidy=FALSE}
-PollSession <- 
+apiPollSession <- 
   function(response, sortType = c("price", "duration", "carrier",
               "outboundarrivetime", "outbounddeparttime",
               "inboundarrivetime", "inbounddeparttime"),
