@@ -86,9 +86,9 @@ Main files:
 
 ---
 
-# Automatically Key Checking
+# Automatical Key Checking
 
-One of our package's feature is the automatcially key checking when loading the package.
+One of our package's feature is the automatcial key checking when loading the package.
 
 If there is no file named **API_KEY.txt** in the working directory, then an interactive function **keychecking** will run.
 
@@ -110,9 +110,9 @@ library(flightscanner)
 
 ---
 
-# Cont.d
+# Cont'd
 
-If the input API is not valid, then it will has message 
+If the input API is not valid, then it will show the message 
 
 
 ```
@@ -127,6 +127,32 @@ otherwise
 ```
 
 The key will be stored in **API_KEY.txt** at the current directory and can be used in the future.
+
+---
+
+# Automatical data download
+
+Another feature of our package is the automatcial data download when even quit the Rstudio. This feature is based on the package "cronR"
+
+
+```r
+flightscanner::CreateJob("DSM", "DTW", "2019-06-01",
+          path = file.path(getwd(), "inst"), frequency = "minutely")
+flightscanner::CreateJob("DSM", "DTW", "2019-06-01", 
+          path = file.path(getwd(), "inst"), frequency = "hourly")
+flightscanner::CreateJob("DSM", "DTW", "2019-06-01", "2019-06-10" , 
+          path = file.path(getwd(), "inst"), 
+          frequency = "hourly", at = "3AM")
+cronR::cron_njobs() # show the jobs
+cronR::cron_ls() # show the jobs
+cronR::cron_clear(ask = FALSE) # clear all the jobs
+```
+
+Two files will be generated:
+
+- log file: script_DSM_DTW_2019-06-01.log
+
+- database: flight.db
 
 ---
 
