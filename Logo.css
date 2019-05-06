@@ -1,0 +1,8 @@
+.title-slide {
+	background-color: #fff;
+  background-image: url(/image/Logo.png);
+	background-position: center bottom 170px;
+	background-size: 30%;
+	border-bottom: 0px solid  #522D80;
+	box-shadow:  0 55px 0 #fff;
+}

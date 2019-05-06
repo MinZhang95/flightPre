@@ -1,9 +1,9 @@
 ---
 title: "FlightScanner"
 subtitle: ""
-author: "Dapeng Hu, Yang Qiao, Min Zhang, Xin Zhang, Zerui Zhang"
-institute: "Iowa State University"
-date: "2019/05/06"
+author: "Monster 🐑"
+institute: "Snedecor Inc."
+date: "2019/05/03"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -18,42 +18,20 @@ library(flightscanner)
 library(dplyr)
 ```
 
+
 # Motivation 
 
-<img src="image/Logo.png" style="position:absolute;top:0px;right:0px;width:15%" />
+- Monster 🐑 said:" All flights are bad, but some are endurable!"
 
-- "All flights cost money, but some are affordable!"
+- In 2017, Monster 🐑 searched the flights from Seattle to Des Moines everyday and found this fucking procedure was fucking terrible -- then he decided to change the world!
 
---
+- During 2018, Monster 🐑 endured hardships to beat all his coding enemies, and won out from STAT 580, ECE 526...
 
-- Existing flight searching engines (e.g. [Google Flight](https://www.google.com/flights?hl=en#flt=/m/02j3w..2019-05-20*./m/02j3w.2019-05-24;c:USD;e:1;ls:1w;sd:0;t:h) is a very good flight searching engine, how could we beat products alike?).
+- In 2019, a trigger emerged: the great STAT 585 encouraged him to push the upgrade of the flight search engine and **FlightScanner** comes to the world!
 
---
+- In the future, Monster 🐑 will lead our team to get more further steps and make **FlightScanner** become to only **ONE** flight search engine in the World!
 
-- They are not perfect: distracting ads/ no map of origin & destination/ cannot search automatically.
-
---
-
-- Our goal: build a flight searching R package and Shiny APP from 0, and solve the problems we noticed. 
-
---
-
-- Google Flight API was deprecated on April/10/2018. Instead, we used Rapid API which enquires data from Skyscanner.
-
----
-# Skyscanner
-
-<img src="image/Logo.png" style="position:absolute;top:0px;right:0px;width:15%" />
-
-[Skyscanner](https://www.skyscanner.com/) is a travel fare aggregator website and travel metasearch engine based in Scotland, owned by Ctrip, the largest travel company in China.
-
-```{r, out.width='100%', fig.align='center', echo=F}
-knitr::include_graphics('image/skyscanner.png')
-```
-
---
-
-[Skyscanner flight search via Rapid API (free)](https://rapidapi.com/skyscanner/api/skyscanner-flight-search)
+Our team: Monster 🐑, Hu 🦅, Zhang 👧, Zhang 🐷  Zhang  🐒
 
 ---
 class: inverse, center, middle
@@ -62,7 +40,7 @@ class: inverse, center, middle
 
 ---
 
-# Hello FlightScanner!
+# Hello Monster 🐑!
 
 Install the **FlightScanner** package from [Github](https://github.com/MinZhang95/flightscanner)
 
@@ -96,7 +74,7 @@ SetAPI <- function(host, key) {
 
 --
 - Process of create session and poll session
-![](image/session_graph.png)
+![](session_graph.png)
 
 ---
 # api.R
@@ -254,6 +232,7 @@ head(data$agents)[1:3]
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 head(data$places)
 ```
+
 ---
 
 # Automatically Key Checking
@@ -262,9 +241,6 @@ One of our package's feature is the automatcially key checking when loading the 
 
 If there is no file named **API_KEY.txt** in the working directory, then an interactive function **keychecking** will run.
 
-```{r}
-library(flightscanner)
-```
 
 ---
 
@@ -291,5 +267,5 @@ The key will be stored in **API_KEY.txt** at the current directory and can be us
 ---
 class: inverse, center, middle
 # Thanks! 
-![](image/thx.jpeg)
+![](33ef27238b2e2a6f35c63c89c5d94f84_t.jpeg)
   
