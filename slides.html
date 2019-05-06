@@ -13,7 +13,6 @@ class: center, middle, inverse, title-slide
 
 # FlightScanner
 ### Dapeng Hu, Yang Qiao, Min Zhang, Xin Zhang, Zerui Zhang
-### Iowa State University
 ### 2019/05/06
 
 ---
@@ -345,7 +344,7 @@ This file has some functions to deal with the data. Two main functions:
 - **GetData**: obtain some data.frames from the source.
 
     - **GetData.response**  
-      extract data from API response (list).
+      extract data from API (response).
       
     - **GetData.SQLiteConnection**  
       read data from SQLite database (connection).
@@ -360,8 +359,8 @@ This file has some functions to deal with the data. Two main functions:
 GetData(x, ...)
 ```
 
-2 methods: 
-- `response`: from API response
+2 methods:
+- `response`: from API
 - `SQLiteConnection`: from SQLite database
 
 --
@@ -427,7 +426,7 @@ dbCreateDB(conn = RSQLite::SQLite(), dbname = "flight.db")
 Function:
 1. Connect to SQLite driver
 
-2. Create local database file "flight.db" if not exists.
+2. Create a local database file "flight.db" if not exists.
 
 3. Create 7 tables if not exist in the database.  
     - Price, Itineries, Legs, Segments, Agents, Carriers, Places.
@@ -569,6 +568,7 @@ log file: script_DSM_DTW_2019-06-01.log
 
 database: flight.db
 
+
 ```r
 # connect to SQLite database
 con &lt;- dbCreateDB(dbname = "flight.db")
@@ -576,7 +576,24 @@ con &lt;- dbCreateDB(dbname = "flight.db")
 # read data from database
 data &lt;- GetData(con)  
 dbListTables(con)
+```
 
+```
+[1] "agent"     "carrier"   "itinerary" "leg"       "place"     "price"    
+[7] "segment"  
+```
+
+```r
+unique(data$price$SearchTime)
+```
+
+```
+[1] "2019-05-05 09:00:13 CDT" "2019-05-05 10:00:05 CDT"
+[3] "2019-05-05 13:00:12 CDT" "2019-05-05 14:00:07 CDT"
+[5] "2019-05-05 15:00:04 CDT" "2019-05-05 16:00:05 CDT"
+```
+
+```r
 # disconnect database
 dbDisconnect(con)
 ```

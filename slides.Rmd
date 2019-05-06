@@ -258,7 +258,7 @@ This file has some functions to deal with the data. Two main functions:
 - **GetData**: obtain some data.frames from the source.
 
     - **GetData.response**  
-      extract data from API response (list).
+      extract data from API (response).
       
     - **GetData.SQLiteConnection**  
       read data from SQLite database (connection).
@@ -273,8 +273,8 @@ This file has some functions to deal with the data. Two main functions:
 GetData(x, ...)
 ```
 
-2 methods: 
-- `response`: from API response
+2 methods:
+- `response`: from API
 - `SQLiteConnection`: from SQLite database
 
 --
@@ -340,7 +340,7 @@ dbCreateDB(conn = RSQLite::SQLite(), dbname = "flight.db")
 Function:
 1. Connect to SQLite driver
 
-2. Create local database file "flight.db" if not exists.
+2. Create a local database file "flight.db" if not exists.
 
 3. Create 7 tables if not exist in the database.  
     - Price, Itineries, Legs, Segments, Agents, Carriers, Places.
@@ -456,13 +456,14 @@ log file: script_DSM_DTW_2019-06-01.log
 
 database: flight.db
 
-```r
+```{r, eval=TRUE}
 # connect to SQLite database
 con <- dbCreateDB(dbname = "flight.db")
 
 # read data from database
 data <- GetData(con)  
 dbListTables(con)
+unique(data$price$SearchTime)
 
 # disconnect database
 dbDisconnect(con)
