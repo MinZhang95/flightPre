@@ -105,37 +105,27 @@ SetAPI <- function(key) {
 Create a session with query details and get a session ID
 ```r
 apiCreateSession(
-  origin, destination,
-  startDate, returnDate = NULL,
+  origin,
+  destination,
+  startDate,
+  returnDate = NULL,
   adults = 1, children = NULL, infants = NULL,
   country = "US", currency = "USD", locale = "en-US",
-  cabinClass = c("economy", "premiumeconomy", "business", "first"),
-  includeCarriers = NULL, excludeCarriers = NULL)
+  cabinClass = c("economy", "premiumeconomy", "business", "first")
+)
 ```
-
 
 ---
 # api.R \- apiPollSession
 Use session ID to poll results, sort results and filter results farther.
 ```r
 apiPollSession(
-  response, sortType = c("price", "duration", "carrier",
-                         "outboundarrivetime", "outbounddeparttime",
-                         "inboundarrivetime", "inbounddeparttime"),
-  sortOrder = c("asc", "desc"),
-  duration = NULL, stops = NULL,
-  includeCarriers = NULL,
-  excludeCarriers = NULL,
-  originAirports = NULL,
-  destinationAirports = NULL,
-  outboundDepartTime = NULL,
-  outboundDepartStartTime = NULL, 
-  outboundDepartEndTime = NULL,
-  outboundArriveStartTime = NULL,
-  outboundArriveEndTime = NULL,
-  inboundDepartTime = NULL,
-  inboundDepartStartTime = NULL, inboundDepartEndTime = NULL,
-  inboundArriveStartTime = NULL, inboundArriveEndTime = NULL)
+  response,
+  sortType = c("price", "duration", "carrier",
+               "outboundarrivetime", "outbounddeparttime",
+               "inboundarrivetime", "inbounddeparttime"),
+  sortOrder = c("asc", "desc")
+)
 ```
 
 ---
