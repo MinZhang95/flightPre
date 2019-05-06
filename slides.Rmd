@@ -14,7 +14,7 @@ output:
 ---
 
 ```{r global_options, include = FALSE}
-knitr::opts_chunk$set(eval = F, warning = F, message = F, comment = "")
+knitr::opts_chunk$set(eval = F, warning = F, message = F, comment = "", fig.align = "center")
 ```
 
 ```{r, echo=FALSE, eval=TRUE}
@@ -269,6 +269,9 @@ This file has some functions to deal with the data. Two main functions:
 
 ---
 # dataprocess.R \- GetData
+```{r, out.width='65%', echo=FALSE, eval=TRUE}
+knitr::include_graphics('yanggedetu.png')
+```
 ```r
 GetData(x, ...)
 ```
