@@ -483,8 +483,9 @@ Raw travel plan:
 
     temporal plot showing the price fluctuations. Diviniations may help us know when to buy the tickets with the lowest price!
     
-<img src="divination.jpg" width=200>
-
+```{r, out.width='50%', echo=FALSE, eval=TRUE}
+knitr::include_graphics('divination.jpg')
+```
 ---
 class: inverse, center, middle
 # Thanks! 
